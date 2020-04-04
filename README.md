@@ -7,7 +7,6 @@ I have added:
 
 ![Alt text](./content/mandatory.gif "inffected coronavirus")
 
-
 This code is based on:
 
 https://github.com/Lemoncode/d3js-typescript-examples/tree/master/02-maps/02-pin-location-scale
@@ -17,7 +16,7 @@ We have to face three challenges here:
 - Place pins on a map based on location.
 - Scale pin radius based on affected number.
 
-## STEPS
+# STEPS
 
 # Installation
 
@@ -237,7 +236,7 @@ export const FinalInfected_stats: DataEntry[] = [
 
 _./src/communities.ts_
 
-```diff
+```typescript
 export interface DataEntry {
   name: string;
   long: number;
@@ -352,7 +351,7 @@ const aProjection = d3Composite
 
 _./src/index.ts_
 
-```diff
+```typescript
 const changeMap = (data: DataEntry[]) =>{
    };
 
@@ -365,7 +364,7 @@ const changeMap = (data: DataEntry[]) =>{
 _./src/index.ts_
 
 
-```diff
+```typescript
 const maxAffected = data.reduce(
         (max, item) => (item.value > max ? item.value : max),
         0
@@ -375,7 +374,7 @@ const maxAffected = data.reduce(
 
 _./src/index.ts_
 
-```diff
+```typescript
  const affectedRadiusScale = d3
     .scaleLinear()
     .domain([0, maxAffected])
@@ -386,7 +385,7 @@ _./src/index.ts_
 
 _./src/index.ts_
 
-```diff
+```typescript
 const calculateRadiusBasedOnAffectedCases = (comunidad: string) => {
       const entry = data.find(item => item.name === comunidad);
       return entry ? affectedRadiusScale(entry.value) : 0;
@@ -397,7 +396,7 @@ const calculateRadiusBasedOnAffectedCases = (comunidad: string) => {
 
 _./src/index.ts_
 
-```diff
+```typescript
 const circles = svg.selectAll("circle")
 
     circles
